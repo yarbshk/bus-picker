@@ -20,6 +20,7 @@ public class AnchorPaneController {
     private BusService busService = new BusService();
 
     public void searchSuitableBuses(ActionEvent actionEvent) {
+        // Verify that provided number of seats is a number
         int seatsNumber;
         try {
             seatsNumber = Integer.parseInt(this.seatsNumber.getText());
@@ -28,6 +29,7 @@ public class AnchorPaneController {
             return;
         }
 
+        // Filter buses by the seats number
         List<Bus> buses;
         try {
             buses = busService.getBusesBySeatsNumber(seatsNumber);
@@ -36,11 +38,12 @@ public class AnchorPaneController {
             return;
         }
 
+        // Check for emptiness of the buses list
         if (buses.isEmpty()) {
             showWarning("No buses was found");
             return;
         }
 
-        showInformation("Buses list", busService.stringifyBuses(buses));
+        showInformation(busService.collectBusNames(buses), "Buses");
     }
 }

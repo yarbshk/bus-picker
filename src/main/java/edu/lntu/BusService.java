@@ -33,7 +33,7 @@ public class BusService {
                 .collect(Collectors.toList());
     }
 
-    public String stringifyBuses(List<Bus> buses) {
+    public String collectBusNames(List<Bus> buses) {
         return buses.stream()
                 .map(Bus::getName)
                 .collect(Collectors.joining("\n"));
