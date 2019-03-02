@@ -4,19 +4,19 @@ import javafx.scene.control.Alert;
 
 public class AlertUtils {
 
-    public static void showError(String message) {
-        showMessage(message, "Error", Alert.AlertType.ERROR);
+    public static void showPlainErrorAlert(String message) {
+        showPlainAlert(message, "Error", Alert.AlertType.ERROR);
     }
 
-    public static void showWarning(String message) {
-        showMessage(message, "Warning", Alert.AlertType.WARNING);
+    public static void showPlainWarningAlert(String message) {
+        showPlainAlert(message, "Warning", Alert.AlertType.WARNING);
     }
 
-    public static void showInformation(String message, String title) {
-        showMessage(message, title, Alert.AlertType.INFORMATION);
+    public static void showPlainInformationAlert(String message, String title) {
+        showPlainAlert(message, title, Alert.AlertType.INFORMATION);
     }
 
-    private static void showMessage(String message, String title, Alert.AlertType alertType) {
+    private static void showPlainAlert(String message, String title, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);

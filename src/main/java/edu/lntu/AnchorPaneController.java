@@ -25,7 +25,7 @@ public class AnchorPaneController {
         try {
             seatsNumber = Integer.parseInt(this.seatsNumber.getText());
         } catch (NumberFormatException e) {
-            showError("Provided value isn't a number");
+            showPlainErrorAlert("Provided value isn't a number");
             return;
         }
 
@@ -34,16 +34,19 @@ public class AnchorPaneController {
         try {
             buses = busService.getBusesBySeatsNumber(seatsNumber);
         } catch (ParsingException e) {
-            showWarning("Can't parse the input file");
+            showPlainWarningAlert("Can't parse the input file");
+            return;
+        } catch (IllegalArgumentException e) {
+            showPlainErrorAlert(e.getMessage());
             return;
         }
 
         // Check for emptiness of the buses list
         if (buses.isEmpty()) {
-            showWarning("No buses was found");
+            showPlainWarningAlert("No buses was found");
             return;
         }
 
-        showInformation(busService.collectBusNames(buses), "Buses");
+        showPlainInformationAlert(busService.collectBusNames(buses), "Buses");
     }
 }
