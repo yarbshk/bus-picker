@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 public class BusService {
 
     private static final String BUSES_FILEPATH = "/buses.json";
+    private static final int MIN_SEATS_NUMBER = 0;
 
     @Setter
     private ObjectMapper objectMapper = new ObjectMapper();
@@ -27,9 +28,14 @@ public class BusService {
     }
 
     public List<Bus> getBusesBySeatsNumber(int seatsNumber) {
+        if (seatsNumber < MIN_SEATS_NUMBER) {
+            throw new IllegalArgumentException(
+                    "Seats number must be greater than or equal to " + MIN_SEATS_NUMBER);
+        }
         return getBuses()
                 .stream()
-                .filter(bus -> seatsNumber == bus.getSeatsNumber())
+                .filter(bus -> bus.getSeatsNumber() >= MIN_SEATS_NUMBER
+                        && seatsNumber <= bus.getSeatsNumber())
                 .collect(Collectors.toList());
     }
 
