@@ -1,6 +1,9 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
+group = 'edu.lntu'
+version = '1.1.0'
+
 mainClassName = 'edu.lntu.BusPickerApplication'
 
 repositories {
