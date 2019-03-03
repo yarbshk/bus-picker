@@ -1,4 +1,4 @@
-package edu.lntu;
+package edu.lntu.buspicker;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,8 +7,6 @@ import javafx.scene.control.TextField;
 import lombok.Setter;
 
 import java.util.List;
-
-import static edu.lntu.AlertUtils.*;
 
 @Setter(onMethod_ = {@FXML})
 public class AnchorPaneController {
@@ -25,7 +23,7 @@ public class AnchorPaneController {
         try {
             seatsNumber = Integer.parseInt(this.seatsNumber.getText());
         } catch (NumberFormatException e) {
-            showPlainErrorAlert("Provided value isn't a number");
+            AlertUtils.showPlainErrorAlert("Provided value isn't a number");
             return;
         }
 
@@ -34,19 +32,19 @@ public class AnchorPaneController {
         try {
             buses = busService.getBusesBySeatsNumber(seatsNumber);
         } catch (ParsingException e) {
-            showPlainWarningAlert("Can't parse the input file");
+            AlertUtils.showPlainWarningAlert("Can't parse the input file");
             return;
         } catch (IllegalArgumentException e) {
-            showPlainErrorAlert(e.getMessage());
+            AlertUtils.showPlainErrorAlert(e.getMessage());
             return;
         }
 
         // Check for emptiness of the buses list
         if (buses.isEmpty()) {
-            showPlainWarningAlert("No buses was found");
+            AlertUtils.showPlainWarningAlert("No buses was found");
             return;
         }
 
-        showPlainInformationAlert(busService.collectBusNames(buses), "Buses");
+        AlertUtils.showPlainInformationAlert(busService.collectBusNames(buses), "Buses");
     }
 }

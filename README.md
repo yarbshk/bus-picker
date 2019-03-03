@@ -1,9 +1,12 @@
 # BusPicker
-A simple JavaFX application that filter buses by seats number using a JSON file as the input source.
+A simple JavaFX application that filter a list of objects (buses) from a JSON file.
 
 ### Getting started
 To run the application from the sources:\
-`$ ./gradlew run`
+`$ ./gradlew jfxRun`
+
+To pack a self-contained application into the `build/jfx/naive` directory:\
+`$ ./gradlew jfxNative`
 
 ### Copyright
-Code released under the MIT License in 2018 by Yurii Rabeshko.
+Code released under the MIT License in 2018 by [Yurii Rabeshko](https://twitter.com/yarbshk).

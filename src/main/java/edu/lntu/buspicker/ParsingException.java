@@ -1,4 +1,4 @@
-package edu.lntu;
+package edu.lntu.buspicker;
 
 public class ParsingException extends RuntimeException {
 

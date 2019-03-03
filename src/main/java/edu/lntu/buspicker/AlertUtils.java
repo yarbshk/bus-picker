@@ -1,4 +1,4 @@
-package edu.lntu;
+package edu.lntu.buspicker;
 
 import javafx.scene.control.Alert;
 

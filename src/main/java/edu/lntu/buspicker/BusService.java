@@ -1,4 +1,4 @@
-package edu.lntu;
+package edu.lntu.buspicker;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.NoArgsConstructor;

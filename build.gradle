@@ -1,10 +1,17 @@
+buildscript {
+    dependencies {
+        classpath 'de.dynamicfiles.projects.gradle.plugins:javafx-gradle-plugin:8.8.2'
+    }
+    repositories {
+        mavenCentral()
+    }
+}
+
 apply plugin: 'java'
-apply plugin: 'application'
+apply plugin: 'javafx-gradle-plugin'
 
 group = 'edu.lntu'
 version = '1.1.0'
-
-mainClassName = 'edu.lntu.BusPickerApplication'
 
 repositories {
     mavenCentral()
@@ -12,12 +19,11 @@ repositories {
 
 dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.6'
-    implementation 'org.projectlombok:lombok:1.18.6'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
+    compileOnly 'org.projectlombok:lombok:1.18.6'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
 }
 
-jar {
-    from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-    }
+jfx {
+    mainClass = 'edu.lntu.buspicker.BusPickerApplication'
+    vendor = 'yarbshk'
 }
